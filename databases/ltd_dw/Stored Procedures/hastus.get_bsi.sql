@@ -42,6 +42,7 @@ drop table if exists #cal
 drop table if exists #pat
 DROP TABLE IF EXISTS #trips
 DROP TABLE IF EXISTS #rteLimit
+DROP TABLE IF EXISTS #postDesc
 drop table if exists #rte_loop
 DROP TABLE IF EXISTS #tp_places
 DROP TABLE IF EXISTS #linkedPlaceRows
@@ -181,6 +182,25 @@ JOIN (SELECT DISTINCT file_row_id,tpatpt_load_place FROM #pat
 LEFT JOIN hastus.avl_plc c ON c.plc_identifier = i.time_from_point
 ORDER BY i.file_row_ID
 
+------------------------------
+
+SELECT
+    p.poster_stop_id,p.poster_description,
+    trim(x.value('.', 'varchar(50)')) AS poster_route
+INTO #postDesc
+FROM hastus.avl_pbs p
+CROSS APPLY (
+    SELECT CAST(
+        '<x>' + REPLACE(p.poster_route, ',', '</x><x>') + '</x>' 
+        AS XML
+    ) xml_data
+) t
+CROSS APPLY t.xml_data.nodes('/x') s(x);
+
+
+
+-------------------------------
+
 
 select t.[trp_number]
 ,t.[trp_int_number]
@@ -282,7 +302,7 @@ SELECT distinct t.trp_number
 FROM #trips t
 JOIN #placesWithTimePoints p ON p.tpat_route = t.rte_identifier AND p.tpatpt_stop_id = t.trppt_stop_id AND p.tpat_external_id = t.tpat_external_id
 JOIN hastus.avl_rte r ON r.rte_identifier = t.rte_identifier 
-JOIN hastus.avl_pbs s ON s.poster_stop_id = t.trppt_stop_id 
+JOIN #postDesc s ON s.poster_stop_id = t.trppt_stop_id 
 ORDER BY trp_oper_days_12, trppt_arrival_time
 
 
@@ -325,13 +345,16 @@ ISNULL(@ins,0) ,ISNULL(@upd,0),ISNULL(@del,0),
 @sdt,
 SYSDATETIME()
 
-DROP TABLE IF EXISTS #cal
-DROP TABLE IF EXISTS #pat
-DROP TABLE IF EXISTS #rankPlace
-DROP TABLE IF EXISTS #rteLoop
+
+drop table if exists #cal
+drop table if exists #pat
 DROP TABLE IF EXISTS #trips
-DROP TABLE IF EXISTS #xmlprep
-DROP TABLE IF EXISTS #xmlsource
+DROP TABLE IF EXISTS #rteLimit
+DROP TABLE IF EXISTS #postDesc
+drop table if exists #rte_loop
+DROP TABLE IF EXISTS #tp_places
+DROP TABLE IF EXISTS #linkedPlaceRows
+DROP TABLE IF EXISTS #placesWithTimePoints
 
 
 
