@@ -1,0 +1,22 @@
+CREATE TABLE [dbo].[TELEPHONE_DIRECTORY]
+(
+[TEL_DIR_ID] [numeric] (5, 0) NOT NULL IDENTITY(1, 1),
+[LAST_NAME] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[FIRST_NAME] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[MIDDLE_NAME] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[COMPANY_NAME] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[TELEPHONE_NUMBER] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[FAX_NUMBER] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[MOBILE_NUMBER] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PAGER_NUMBER] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[GENERAL_INFORMATION] [varchar] (2000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PRIORITY] [numeric] (5, 0) NULL,
+[ADDRESS] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CITY] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[STATE] [char] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ZIP] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EMPLOYEE_NUMBER] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EMERGCONTNAME] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EMERGCONTPHONENUM] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

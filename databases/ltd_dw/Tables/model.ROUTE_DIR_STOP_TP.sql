@@ -1,0 +1,26 @@
+CREATE TABLE [model].[ROUTE_DIR_STOP_TP]
+(
+[RTE_DIR_STOP_KEY_ID] [int] NOT NULL IDENTITY(1, 1),
+[ROUTE_ID] [int] NULL,
+[ROUTE_DIRECTION_ID] [numeric] (5, 0) NULL,
+[GEO_NODE_ID] [numeric] (10, 0) NULL,
+[ROUTE_ABBR] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ROUTE_NAME] [varchar] (75) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[STOP_ABBR] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ROUTE_DIRECTION_ABBR] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ROUTE_DIRECTION_NAME] [varchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ROUTE_DIR] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[STOP_NAME] [varchar] (75) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[RTE_DIR_STOP_TP_KEY] [decimal] (38, 0) NULL,
+[STOP_LATITUDE] [numeric] (21, 9) NULL,
+[STOP_LONGITUDE] [numeric] (21, 9) NULL,
+[TIME_POINT_ABBR] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[TIME_PT_NAME] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[significant_tp] [nvarchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__ROUTE_DIR__recor__0B0313C0] DEFAULT (sysdatetime())
+) ON [PRIMARY]
+GO
+CREATE CLUSTERED COLUMNSTORE INDEX [ix_ccs_ROUTE_DIR_STOP_TP] ON [model].[ROUTE_DIR_STOP_TP] ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [ix_ROUTE_DIR_STOP_TP_RouteId_RouteDirectionId_Geo_Node_Id] ON [model].[ROUTE_DIR_STOP_TP] ([ROUTE_ID], [ROUTE_DIRECTION_ID], [GEO_NODE_ID]) ON [PRIMARY]
+GO

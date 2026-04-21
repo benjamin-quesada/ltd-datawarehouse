@@ -1,0 +1,32 @@
+CREATE TABLE [eam].[workOrderJobHeader]
+(
+[work_order_job_key] [bigint] NOT NULL IDENTITY(1, 1),
+[work_order_yr] [int] NULL,
+[work_order_no] [int] NULL,
+[work_order_yr_no] [varchar] (65) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[job_type] [varchar] (8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EQ_equip_no] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[is_roadcall] [int] NOT NULL,
+[MilesAtLastRC] [int] NULL,
+[milesBetweenRC] [int] NULL,
+[calid_entered] [int] NULL,
+[datetime_open] [datetime] NULL,
+[calid_datetime_open] [int] NULL,
+[calid_datetime_closed] [int] NULL,
+[WorkorderVehicleKey] [varchar] (46) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[date_entered] [datetime] NULL,
+[datetime_out_service] [datetime] NULL,
+[datetime_in_service] [datetime] NULL,
+[work_order_status] [varchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[warranty] [varchar] (7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[job_account_id] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[hours_out_of_service] [numeric] (17, 6) NULL,
+[datetime_first_labor] [datetime] NULL,
+[hours_to_first_work] [numeric] (17, 6) NULL,
+[datetime_finished] [datetime] NULL,
+[hours_to_finished_work] [numeric] (17, 6) NULL,
+[datetime_closed] [datetime] NULL,
+[hours_to_closed] [numeric] (17, 6) NULL,
+[record_created_date] [datetime] NOT NULL CONSTRAINT [DF__workOrder__recor__5EB97BDE] DEFAULT (sysdatetime())
+) ON [PRIMARY]
+GO

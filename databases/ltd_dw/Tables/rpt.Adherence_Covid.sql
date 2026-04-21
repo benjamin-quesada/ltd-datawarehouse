@@ -1,0 +1,30 @@
+CREATE TABLE [rpt].[Adherence_Covid]
+(
+[the_date] [datetime] NOT NULL,
+[block] [varchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[trip_end] [char] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[sched] [char] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[arrive] [char] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[depart] [char] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[adhere_min] [numeric] (9, 2) NULL,
+[dwell_min] [numeric] (9, 2) NULL,
+[adherence] [numeric] (5, 0) NULL,
+[rte] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[rte_dir] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[svc] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[tp] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[tp_name] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[late_waived_tp] [numeric] (5, 0) NULL,
+[early_waived_tp] [numeric] (5, 0) NULL,
+[missing_waived_tp] [numeric] (5, 0) NULL,
+[ltd_status] [varchar] (7) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[day_of_week] [nvarchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[sa_tp] [int] NOT NULL,
+[white_line] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[drop_off_only] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[time_dec] [decimal] (6, 3) NULL,
+[peak_period] [varchar] (11) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[peak_period_order] [int] NULL,
+[grp_date] [varchar] (27) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

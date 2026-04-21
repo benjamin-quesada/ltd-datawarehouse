@@ -1,0 +1,3 @@
+CREATE SCHEMA [ftk]
+AUTHORIZATION [dbo]
+GO

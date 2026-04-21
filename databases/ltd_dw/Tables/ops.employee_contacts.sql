@@ -1,0 +1,33 @@
+CREATE TABLE [ops].[employee_contacts]
+(
+[opsEmployeeContactKey] [int] NOT NULL IDENTITY(1, 1),
+[last_name] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[first_name] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[middle_name] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[middle_initial] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[empFullname] [nvarchar] (4000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[employee_id] [varchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsCellNumber] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsHomeNumber] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsContactName] [varchar] (210) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsRelationshipType] [varchar] (254) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsContactPriority] [int] NULL,
+[pdsContactPh1] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsContactPh2] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pdsContactPh3] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[asofDate] [datetime2] NULL,
+[midasContactType] [varchar] (4) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasContactName] [varchar] (50) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[contact_seq] [smallint] NULL,
+[midasPhone1] [varchar] (14) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPType1] [varchar] (4) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPhone2] [varchar] (14) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPType2] [varchar] (4) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPhone3] [varchar] (14) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPType3] [varchar] (4) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPhone4] [varchar] (14) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[midasPType4] [varchar] (4) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__employee___recor__58EDFA23] DEFAULT (sysdatetime()),
+[record_updated_date] [datetime2] NULL
+) ON [PRIMARY]
+GO

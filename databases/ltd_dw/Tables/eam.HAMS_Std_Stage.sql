@@ -1,0 +1,32 @@
+CREATE TABLE [eam].[HAMS_Std_Stage]
+(
+[Time] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[GPS] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Longitude] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Latitude] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Accelerometer] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[X] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Y] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Z] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[0C Left Charge Gun] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[0D Right Charge Gun] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2A SOC %] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2B Battery Energy kWh] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2E Total Current A] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2F Total Voltage V] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2G Lowest Battery Temp F] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2H Highest Battery Temp F] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2I Speed mph] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2J Motor RPM rpm] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2K Total Mileage mile] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2L Range mile] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2M Left Charge Status bit] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2N Right Charge Status bit] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2T WAVE Status bit] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2U High Voltage bit] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[2Z Motor Voltage V] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[3C Regen bit] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[3D Once charged Energy kWh] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[FileName] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

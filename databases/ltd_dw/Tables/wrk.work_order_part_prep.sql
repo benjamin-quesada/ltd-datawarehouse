@@ -1,0 +1,31 @@
+CREATE TABLE [wrk].[work_order_part_prep]
+(
+[wo_part_prep_key] [int] NOT NULL IDENTITY(1, 1),
+[work_order_yr] [varchar] (12) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[work_order_no] [int] NOT NULL,
+[wo_yr_no_tsk] [varchar] (38) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[row_id] [int] NOT NULL,
+[work_order_yr_no] [varchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vehicle_number] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[WorkorderVehicleKey] [varchar] (46) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PART_part_no] [varchar] (22) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[part_suffix] [int] NULL,
+[part_keyword] [varchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[part_description] [varchar] (8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[part_description_short] [varchar] (8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[task_account_id] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[qty_issued] [numeric] (14, 2) NULL,
+[request_qty] [numeric] (14, 2) NULL,
+[TASK_task_code] [varchar] (12) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[issued_cal_id] [int] NULL,
+[part_account_id] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[unit_issue_price] [numeric] (14, 4) NULL,
+[unit_price_calculated] [numeric] (29, 17) NULL,
+[issued_value] [numeric] (14, 4) NULL,
+[posting_complete] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[parts_cost] [numeric] (12, 2) NULL,
+[meter_1_reading] [int] NULL,
+[lastPartMileage] [int] NULL,
+[milesSinceLastPart] [int] NULL
+) ON [PRIMARY]
+GO

@@ -1,0 +1,42 @@
+CREATE TABLE [ops].[codes]
+(
+[codeType_key] [int] NOT NULL IDENTITY(1, 1),
+[codeType] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[codeSet] [dbo].[codeSet] NOT NULL,
+[codeValue] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[description] [varchar] (80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[basicflags] [smallint] NOT NULL,
+[flagset1] [smallint] NOT NULL,
+[flagset2] [smallint] NOT NULL,
+[flagset3] [smallint] NOT NULL,
+[flagset4] [smallint] NOT NULL,
+[smallint1] [smallint] NULL,
+[smallint2] [smallint] NULL,
+[smallint3] [smallint] NULL,
+[smallint4] [smallint] NULL,
+[smallint5] [smallint] NULL,
+[smallint6] [smallint] NULL,
+[smallint7] [smallint] NULL,
+[smallint8] [smallint] NULL,
+[int1] [int] NULL,
+[int2] [int] NULL,
+[onechar1] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[onechar2] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[onechar3] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[onechar4] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar1] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar2] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar3] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar4] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar5] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar6] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar7] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fourchar8] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[codevarchar] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[modStampUser] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__codes__record_cr__12F4DACD] DEFAULT (sysdatetime()),
+[record_updated_date] [datetime2] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [ops].[codes] ADD CONSTRAINT [PK_codes] PRIMARY KEY CLUSTERED ([codeType_key]) ON [PRIMARY]
+GO

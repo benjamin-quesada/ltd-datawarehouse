@@ -1,0 +1,43 @@
+CREATE TABLE [pds].[Integration_EmpContact]
+(
+[emp_econtact_id] [int] NOT NULL IDENTITY(1, 1),
+[emp_econtact_status] [varchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[person_id] [int] NULL,
+[employee_id] [varchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[contact_name] [varchar] (210) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[relationship_code] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[relationship] [varchar] (254) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[area_code1] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phone_no1] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[extension1] [varchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phone_number1] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[area_code2] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phone_no2] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[extension2] [varchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phone_number2] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[area_code3] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phone_no3] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[extension3] [varchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phone_number3] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[address_line1] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[address_line2] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[address_line3] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[address_line4] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[city] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[county] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[state] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[state_name] [varchar] (80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[zip] [varchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[zip_code] [varchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[city_state_zip] [varchar] (80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[country_code] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[country] [varchar] (254) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[effective_date] [datetime2] NULL,
+[mail_address] [varchar] (60) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[priority] [int] NULL,
+[record_created_date] [datetime2] NULL CONSTRAINT [DF__Integrati__recor__4A58F394] DEFAULT (sysdatetime()),
+[record_updated_date] [datetime2] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [pds].[Integration_EmpContact] ADD CONSTRAINT [PK_Integration_EmpContact] PRIMARY KEY CLUSTERED ([emp_econtact_id]) ON [PRIMARY]
+GO

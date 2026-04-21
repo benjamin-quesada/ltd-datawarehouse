@@ -1,0 +1,11 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE FUNCTION [eam].[fueling_date] (@p_fueling_datetime DATETIME) RETURNS DATE AS
+BEGIN
+   RETURN CAST(DATEADD(DAY, CASE WHEN DATEPART(HOUR, @p_fueling_datetime) >= 4 THEN 0 ELSE -1 END, @p_fueling_datetime) AS DATE)
+END
+
+GO

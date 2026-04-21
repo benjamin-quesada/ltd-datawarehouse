@@ -1,0 +1,32 @@
+CREATE TABLE [efare].[stage_FARE_Extended_old]
+(
+[txId] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ts] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[type] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[mediaUsed] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[mediaType] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[cardNumber] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fareType] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[accountId] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[stopName] [varchar] (90) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[stopId] [varchar] (12) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[routeName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[latitude] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[longitude] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[reader] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vehicle] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[passUsed] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[productAbbreviation] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[trip] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[readerPosition] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fare] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[routeTypeId] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[routeTypeName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[fileloading] [varchar] (90) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[postedTs] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[passFirstUsed] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[lastModifiedTs] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[stopGtfsId] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[stopGtfsCode] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

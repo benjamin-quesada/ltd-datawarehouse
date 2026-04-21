@@ -1,0 +1,41 @@
+CREATE TABLE [cits].[CITS_Input]
+(
+[CITS_ID] [int] NOT NULL IDENTITY(1, 1),
+[CITS_STATUS] [varchar] (32) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF__CITS_Inpu__CITS___492DF45B] DEFAULT ('current'),
+[ID] [int] NULL,
+[Received by Number] [nvarchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Type] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Customer Last Name] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Customer First Name] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Home Phone] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Date Of Incident] [datetime] NULL,
+[Time of Incident] [datetime] NULL,
+[Direction of Travel] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Location Street] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Location Cross Street] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Route Number] [nvarchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Bus Number] [int] NULL,
+[Employee Number] [nvarchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Department Code] [nvarchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Staff Number] [nvarchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Call Back] [bit] NULL,
+[Nature of Incident] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Employee Description] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Customer Comments] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Employee Comments] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Staff Comments] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Date of Staff Comments] [datetime] NULL,
+[Date Entered] [datetime] NULL,
+[Given to Supervisor] [datetime] NULL,
+[NOC] [bit] NULL,
+[record_update_count] [smallint] NOT NULL CONSTRAINT [DF__CITS_Inpu__recor__4A221894] DEFAULT ((0)),
+[record_created_date] [datetime2] NULL CONSTRAINT [DF__CITS_Inpu__recor__4B163CCD] DEFAULT (sysdatetime()),
+[record_updated_date] [datetime2] NULL,
+[FileSource] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ridesource] [bit] NULL,
+[cits_last_updated_dt] [datetime2] NULL,
+[cits_last_updated_by] [nvarchar] (90) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [ix_cits_CITS_Input_118] ON [cits].[CITS_Input] ([ID]) ON [PRIMARY]
+GO

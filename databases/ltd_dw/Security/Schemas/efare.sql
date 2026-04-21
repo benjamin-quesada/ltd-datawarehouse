@@ -1,0 +1,3 @@
+CREATE SCHEMA [efare]
+AUTHORIZATION [dbo]
+GO

@@ -1,0 +1,3 @@
+CREATE SCHEMA [lkp]
+AUTHORIZATION [dbo]
+GO

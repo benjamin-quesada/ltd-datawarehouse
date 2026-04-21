@@ -1,0 +1,5 @@
+CREATE SCHEMA [abb]
+AUTHORIZATION [dbo]
+GO
+GRANT SELECT ON SCHEMA:: [abb] TO [public]
+GO

@@ -1,0 +1,3 @@
+CREATE SCHEMA [itk]
+AUTHORIZATION [dbo]
+GO

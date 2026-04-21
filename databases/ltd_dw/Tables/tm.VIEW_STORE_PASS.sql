@@ -1,0 +1,92 @@
+CREATE TABLE [tm].[VIEW_STORE_PASS]
+(
+[calendar_id] [numeric] (10, 0) NOT NULL,
+[calendar_date] [datetime] NOT NULL,
+[block] [varchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[block_numeric] [int] NULL,
+[msg_time] [char] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[msg_time_spm] [int] NOT NULL,
+[msg_time_sql] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[route] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[dir] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[rte_and_dir] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[rte_public] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[rte_rural] [varchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[emx_block] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[rev_rte] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[pattern_id] [numeric] (10, 0) NOT NULL,
+[pattern] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[geo_node_id] [numeric] (10, 0) NULL,
+[stop] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[stop_name] [varchar] (75) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[college] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[brt_asso_stop] [varchar] (24) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[brt_segment] [varchar] (24) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[brt_seg_offs] [varchar] (24) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pc_latitude] [numeric] (12, 0) NULL,
+[pc_longitude] [numeric] (12, 0) NULL,
+[gn_latitude] [numeric] (12, 0) NULL,
+[gn_longitude] [numeric] (12, 0) NULL,
+[distance_delta_pc_and_gn] [int] NULL,
+[operator_id] [numeric] (5, 0) NULL,
+[badge] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[operator_first] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[operator_last] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[operator] [varchar] (23) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[operators_supervisor] [varchar] (60) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[run] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[the_bus] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[veh] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[bus_class] [varchar] (7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[artic] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[electric] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[emx_bus] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[veh_text] [varchar] (24) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ttv_id] [numeric] (5, 0) NOT NULL,
+[ttv] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[bid] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[service_type_text] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[service_type_general] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[trip_id] [numeric] (10, 0) NOT NULL,
+[trip_sn] [numeric] (18, 0) NULL,
+[trip_seq] [numeric] (7, 0) NULL,
+[blk_trp_seq] [numeric] (7, 0) NULL,
+[trip_end] [char] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[trip_end_time] [int] NOT NULL,
+[block_stop_order] [int] NOT NULL,
+[board] [int] NOT NULL,
+[alight] [int] NOT NULL,
+[run_load] [int] NULL,
+[passenger_miles] [numeric] (9, 2) NULL,
+[departure_load] [int] NULL,
+[odometer] [numeric] (9, 2) NULL,
+[overload_id] [int] NULL,
+[revenue_id] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[passenger_count_id] [bigint] NOT NULL,
+[pc_happened] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[confidence] [tinyint] NULL,
+[confidence_between_100_and_1000_meters] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[confidence_off_route] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[confidence_out_of_sequence] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[confidence_prior_tp_missed] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[confidence_used_mobile_msgs_stop_offset] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[time_point_id] [numeric] (5, 0) NULL,
+[FIRST_DOOR_OPEN_TIME] [int] NULL,
+[LAST_DOOR_CLOSED_TIME] [int] NULL,
+[work_piece_id] [numeric] (10, 0) NULL,
+[isOverload] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__VIEW_STOR__recor__3DE13743] DEFAULT (getdate())
+) ON [PassengerCount]
+GO
+ALTER TABLE [tm].[VIEW_STORE_PASS] ADD CONSTRAINT [PK_VIEW_STORE_PASS] PRIMARY KEY CLUSTERED ([passenger_count_id]) ON [PassengerCount]
+GO
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_board_include2] ON [tm].[VIEW_STORE_PASS] ([board]) INCLUDE ([calendar_date], [service_type_text]) ON [PassengerCount]
+GO
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_calendar_date_include1] ON [tm].[VIEW_STORE_PASS] ([calendar_date]) INCLUDE ([the_bus]) ON [PassengerCount]
+GO
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_calendar_date_gn_latitude_gn_longitude_include3] ON [tm].[VIEW_STORE_PASS] ([calendar_date], [gn_latitude], [gn_longitude]) INCLUDE ([block_numeric], [pc_latitude], [pc_longitude]) ON [PassengerCount]
+GO
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_many] ON [tm].[VIEW_STORE_PASS] ([calendar_id], [calendar_date], [route], [veh], [trip_end_time], [passenger_count_id]) ON [PassengerCount]
+GO
+CREATE NONCLUSTERED INDEX [ix_view_store_pass_calendar_id_the_bus] ON [tm].[VIEW_STORE_PASS] ([calendar_id], [the_bus]) ON [PassengerCount]
+GO

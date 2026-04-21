@@ -1,0 +1,65 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+
+
+
+
+
+
+
+
+CREATE view [tm].[ontime_performance_v_wo_eug_ss]
+
+as
+
+
+/************LTD_GLOSSARY**************
+
+CREATE DT	:	20240220
+CREATE BY	:	B. Eichberger
+PURPOSE		:	Source of data for anlysis and comparisons
+				
+
+			all official on time performance reporting is through reporting database:
+				reporting.tm.ontime_performance_detail
+				reporting.tm.ontime_performance_monthly
+				reporting.tm.ontime_performance_weekly
+
+				Variations of those views exist wherein stations are selected
+				to be excluded or ann and arr points/stops are excluded
+				examples for detail:
+					ontime_performance_detail_wo_ann_arr_stations
+					ontime_performance_detail_wo_eug_ss
+					ontime_performance_detail_wo_eugTU_ssG
+				these also exist for monthly and weekly
+*/
+
+select [svc]			 = a.svc
+	,[the_date]    = a.the_date
+	,[rte]         = a.rte_public
+	,a.rte_dir
+	,a.emx_block
+	,[trip_end]    = a.trip_end
+	,[sa_tps]      = a.sa_tp
+	,[time_points] = count(*)
+	,[ontime]      = sum(a.adjusted_ontime)
+	,[early]       = sum(a.adjusted_early)
+	,[late]        = sum(a.adjusted_late)
+	,[missing]     = sum(a.adjusted_missing)
+	,[not_missing] = sum(case when a.adjusted_missing = 0 then 1 else 0 end)  
+	from Reporting.[tm].[VIEW_STORE_ADH_v] a
+	  where a.trip_end is not null
+	  and a.stop_name not like 'eugene%station%'
+	  and stop_name not like 'spring%station%'
+	    and a.calendar_id > year(getdate())-3
+	 group by a.svc
+			 ,a.the_date
+			 ,a.trip_end
+			 ,a.sa_tp
+			 ,a.rte_public
+			 ,a.rte_dir
+			 ,a.emx_block
+GO

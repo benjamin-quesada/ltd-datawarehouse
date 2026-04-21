@@ -1,0 +1,3 @@
+CREATE SCHEMA [lcog]
+AUTHORIZATION [dbo]
+GO

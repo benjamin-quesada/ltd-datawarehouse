@@ -1,0 +1,3 @@
+CREATE SCHEMA [trtk]
+AUTHORIZATION [dbo]
+GO

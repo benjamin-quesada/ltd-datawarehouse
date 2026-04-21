@@ -1,0 +1,3 @@
+
+GO
+REVOKE CONNECT TO [dbo]

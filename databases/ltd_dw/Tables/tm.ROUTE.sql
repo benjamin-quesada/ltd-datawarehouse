@@ -1,0 +1,17 @@
+CREATE TABLE [tm].[ROUTE]
+(
+[ROUTE_KEY] [int] NOT NULL IDENTITY(1, 1),
+[ROUTE_ID] [int] NOT NULL,
+[ROUTE_GROUP_NAME] [varchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ROUTE_ABBR] [varchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ROUTE_NAME] [varchar] (75) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ISREVENUE] [bit] NOT NULL,
+[ROUTE_TYPE_ID] [int] NULL,
+[SOURCE_LINE_ID] [numeric] (10, 0) NULL,
+[MASTER_ROUTE_ID] [int] NULL,
+[record_created_date] [datetime2] NULL CONSTRAINT [DF__ROUTE__record_cr__1D89A814] DEFAULT (sysdatetime()),
+[record_updated_date] [datetime2] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [tm].[ROUTE] ADD CONSTRAINT [PK_ROUTE] PRIMARY KEY CLUSTERED ([ROUTE_KEY]) ON [PRIMARY]
+GO

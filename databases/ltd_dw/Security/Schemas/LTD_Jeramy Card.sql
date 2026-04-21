@@ -1,0 +1,2 @@
+CREATE SCHEMA [LTD\Jeramy Card]
+GO

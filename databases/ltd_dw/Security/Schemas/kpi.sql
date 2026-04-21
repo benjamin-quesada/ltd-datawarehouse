@@ -1,0 +1,3 @@
+CREATE SCHEMA [kpi]
+AUTHORIZATION [dbo]
+GO

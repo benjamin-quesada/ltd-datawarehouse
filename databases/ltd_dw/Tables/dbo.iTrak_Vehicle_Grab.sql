@@ -1,0 +1,32 @@
+CREATE TABLE [dbo].[iTrak_Vehicle_Grab]
+(
+[VehicleGUID] [uniqueidentifier] NULL,
+[BestImageGUID] [uniqueidentifier] NULL,
+[License] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Country] [nvarchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[State] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Condition] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Color] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[VIN] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Odometer] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Make] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Model] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[VehicleType] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Year] [nvarchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Owner] [uniqueidentifier] NULL,
+[Note] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[DateCreated] [datetime] NULL,
+[DateModified] [datetime] NULL,
+[CreatedBy] [nvarchar] (16) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ModifiedBy] [nvarchar] (16) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LockForAPI] [bit] NULL,
+[Hotlist] [bit] NULL,
+[TimeStamp] [binary] (8) NULL,
+[Exclusive] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[IsGlobal] [bit] NULL,
+[DocumentOwner] [nvarchar] (16) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[OwnerDepartmentGUID] [uniqueidentifier] NULL,
+[Password] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PropertyGUID] [uniqueidentifier] NULL
+) ON [PRIMARY]
+GO

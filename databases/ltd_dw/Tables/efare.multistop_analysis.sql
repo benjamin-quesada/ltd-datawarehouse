@@ -1,0 +1,32 @@
+CREATE TABLE [efare].[multistop_analysis]
+(
+[multistop_analysis_key] [bigint] NOT NULL IDENTITY(1, 1),
+[transaction_card_account_key] [bigint] NULL,
+[ts_dt] [date] NULL,
+[fareType] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[route] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[stopId] [varchar] (12) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[latitude] [decimal] (12, 8) NULL,
+[longitude] [decimal] (12, 8) NULL,
+[next_stopid] [varchar] (12) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[next_stopid_lat] [decimal] (12, 8) NULL,
+[next_stopid_lon] [decimal] (12, 8) NULL,
+[next_board_time] [datetime] NULL,
+[seconds_to_next_board] [int] NULL,
+[first_board] [datetime] NULL,
+[last_board] [datetime] NULL,
+[seconds_first_to_last_board] [int] NULL,
+[manhattan_miles] [numeric] (28, 15) NULL,
+[straight_distance_miles] [float] NULL,
+[tsInLocalTimeCalId] [int] NULL,
+[tsInLocalTimeSPM] [int] NULL,
+[tsInLocalTime] [datetime] NULL,
+[tripSequence] [bigint] NULL,
+[ROUTE_NAME] [varchar] (75) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[STOP_NAME] [varchar] (75) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[STOP_LATITUDE] [numeric] (21, 9) NULL,
+[STOP_LONGITUDE] [numeric] (21, 9) NULL,
+[distance_to_geostop] [int] NULL,
+[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__multistop__recor__7DEF02B9] DEFAULT (sysdatetime())
+) ON [PRIMARY]
+GO

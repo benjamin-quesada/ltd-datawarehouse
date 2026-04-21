@@ -1,0 +1,17 @@
+CREATE TABLE [dbo].[OPERATOR]
+(
+[OPERATOR_ID] [int] NOT NULL IDENTITY(1, 1),
+[ONBOARD_LOGON_ID] [numeric] (7, 0) NULL,
+[BADGE] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[FIRST_NAME] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[MIDDLE_NAME] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LAST_NAME] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[TRANSIT_DIV_ID] [numeric] (5, 0) NULL,
+[DIVISION] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[DEPARTMENT] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ACTIVATION_DATE] [datetime] NULL,
+[DEACTIVATION_DATE] [datetime] NULL,
+[OPERATOR_TYPE_ID] [numeric] (10, 0) NULL,
+[SOURCE_EMPLOYEE_ID] [int] NULL
+) ON [PRIMARY]
+GO

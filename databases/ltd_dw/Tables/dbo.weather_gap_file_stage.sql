@@ -1,0 +1,32 @@
+CREATE TABLE [dbo].[weather_gap_file_stage]
+(
+[dt] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[dt_iso] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[timezone] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[city_name] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[lat] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[lon] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[temp] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[visibility] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[dew_point] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[feels_like] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[temp_min] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[temp_max] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[pressure] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[sea_level] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[grnd_level] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[humidity] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[wind_speed] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[wind_deg] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[wind_gust] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[rain_1h] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[rain_3h] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[snow_1h] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[snow_3h] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[clouds_all] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[weather_id] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[weather_main] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[weather_description] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[weather_icon] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

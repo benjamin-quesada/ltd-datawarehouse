@@ -1,0 +1,3 @@
+CREATE SCHEMA [novus]
+AUTHORIZATION [dbo]
+GO

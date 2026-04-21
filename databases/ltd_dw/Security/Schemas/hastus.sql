@@ -1,0 +1,3 @@
+CREATE SCHEMA [hastus]
+AUTHORIZATION [dbo]
+GO

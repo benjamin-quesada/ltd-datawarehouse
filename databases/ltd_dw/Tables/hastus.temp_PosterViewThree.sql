@@ -1,0 +1,33 @@
+CREATE TABLE [hastus].[temp_PosterViewThree]
+(
+[booking_id] [varchar] (10) COLLATE SQL_Latin1_General_CP850_CI_AS NOT NULL,
+[poster_seq_no] [int] NOT NULL,
+[poster_description] [varchar] (40) COLLATE SQL_Latin1_General_CP850_CI_AS NOT NULL,
+[trip_no] [int] NULL,
+[stop_no] [int] NOT NULL,
+[stop_id_1] [nvarchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[stop_description] [varchar] (100) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[stop_position_in_trip] [smallint] NULL,
+[stop_position_of_last_stop_in_trip] [int] NULL,
+[day] [int] NOT NULL,
+[vscver_id] [int] NULL,
+[time] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[route_destination] [varchar] (40) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[rte] [varchar] (5) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[dir] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[rte_and_dir] [varchar] (7) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[rte_dir_destination] [varchar] (48) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[trip_footnote_id] [varchar] (8) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[trip_footnote] [varchar] (255) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[trip_footnote_2nd_piece] [varchar] (255) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[drop_off_only] [int] NOT NULL,
+[previous_tp_id] [varchar] (9) COLLATE SQL_Latin1_General_CP850_CI_AS NOT NULL,
+[place of last stop in trip] [varchar] (100) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[previous_tp_description] [varchar] (100) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[previous_tp_place_description] [varchar] (100) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[poster_format] [int] NOT NULL,
+[poster_route_id_1] [varchar] (5) COLLATE SQL_Latin1_General_CP850_CI_AS NOT NULL,
+[poster_footnote] [varchar] (2000) COLLATE SQL_Latin1_General_CP850_CI_AS NULL,
+[poster_footnote_length] [int] NULL
+) ON [PRIMARY]
+GO

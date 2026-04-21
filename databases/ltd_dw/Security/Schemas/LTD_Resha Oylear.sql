@@ -1,0 +1,2 @@
+CREATE SCHEMA [LTD\Resha Oylear]
+GO

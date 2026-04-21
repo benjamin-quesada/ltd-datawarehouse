@@ -1,0 +1,32 @@
+CREATE TABLE [hastus].[avl_blk]
+(
+[avl_blk_key] [int] NOT NULL IDENTITY(1, 1),
+[filedate] [date] NULL,
+[file_row_id] [int] NOT NULL,
+[vsc_name] [nvarchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vsc_sched_type] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vsc_sched_type2] [nvarchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vsc_scenario] [nvarchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vsc_booking] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vsc_sched_unit] [nvarchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[vsc_description] [nvarchar] (80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_number] [nvarchar] (8) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_int_number] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_oper_days_12] [nvarchar] (7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_place_start] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_strt_tim_npt] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_plc_strt_no_pull] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_strt_prd_tim] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_plc_end_no_pull] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_end_prd_tim] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_place_end] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_end_tim_npt] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_vehicle_group] [nvarchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_vehicle_type] [nvarchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_time_start] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[blk_time_end] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[trp_int_number] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__avl_blk__record___4D5B7C60] DEFAULT (sysdatetime()),
+[record_updated_date] [datetime2] NULL
+) ON [PRIMARY]
+GO

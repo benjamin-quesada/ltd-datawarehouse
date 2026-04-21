@@ -1,0 +1,22 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+
+CREATE FUNCTION [dbo].[DigitsOnlyEE]
+--Created by Eirikur Eiriksson (29 Oct 2014)
+        (@pString VARCHAR(8000)) 
+RETURNS TABLE WITH SCHEMABINDING AS RETURN
+   WITH  E1(N)    AS (SELECT N FROM (VALUES (NULL),(NULL),(NULL),(NULL),(NULL),(NULL),(NULL),(NULL),(NULL),(NULL)) AS X(N))
+        ,Tally(N) AS (SELECT TOP (LEN(@pString)) (ROW_NUMBER() OVER (ORDER BY (SELECT NULL))) AS Num FROM E1 a,E1 b,E1 c,E1 d ORDER BY Num) 
+ SELECT DigitsOnly = 
+(
+ SELECT SUBSTRING(@pString,N,1)
+   FROM Tally 
+  WHERE ((ASCII(SUBSTRING(@pString,N,1)) - 48) & 0x7FFF) < 10 
+  ORDER BY N
+    FOR XML PATH('')
+)
+;
+GO

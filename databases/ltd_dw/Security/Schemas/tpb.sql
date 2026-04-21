@@ -1,0 +1,3 @@
+CREATE SCHEMA [tpb]
+AUTHORIZATION [dbo]
+GO

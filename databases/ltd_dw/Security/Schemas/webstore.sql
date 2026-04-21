@@ -1,0 +1,3 @@
+CREATE SCHEMA [webstore]
+AUTHORIZATION [dbo]
+GO

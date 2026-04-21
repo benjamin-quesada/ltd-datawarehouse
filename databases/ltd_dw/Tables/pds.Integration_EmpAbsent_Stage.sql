@@ -1,0 +1,30 @@
+CREATE TABLE [pds].[Integration_EmpAbsent_Stage]
+(
+[person_id] [bigint] NULL,
+[context_user_id] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[row_id] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[name] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[last_name] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[first_name] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[middle_name] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[middle_initial] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[aka] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[employee_id] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[company_code] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[company] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[accrual_code] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[accrual] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[from_date] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[return_date] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[time_taken] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[grace_time_taken] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[is_active] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[is_external_time] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[update_code] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[update_description] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[phth_id] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[comments] [varchar] (1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[leave_reason] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[leave_reason_description] [varchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

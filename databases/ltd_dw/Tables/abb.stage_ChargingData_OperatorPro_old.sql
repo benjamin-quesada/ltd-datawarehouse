@@ -1,0 +1,32 @@
+CREATE TABLE [abb].[stage_ChargingData_OperatorPro_old]
+(
+[Charger Serial #] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Energy Delivered (kWh)] [decimal] (16, 8) NULL,
+[Organization: Account Name] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EV Charger Name] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Charger ID] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Software Version] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Charge Session ID] [nvarchar] (90) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ID Tag] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Connector Number] [smallint] NULL,
+[Outlet Type] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Authorization Method] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Authorization Result] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Authorization Accepted] [bit] NOT NULL,
+[Authorization Id] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Start Reason] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Session Start Time] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Session Stop Time] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Duration] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Battery State Of Charge At Session Start] [decimal] (20, 8) NULL,
+[Battery State Of Charge At Session Stop] [decimal] (20, 8) NULL,
+[Meter Value Start] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Meter Value Stop] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Stop Reason] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Stop Reason Detailed] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Transaction ID] [nvarchar] (90) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Payment Reference] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Receipt] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Vehicle Id] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
