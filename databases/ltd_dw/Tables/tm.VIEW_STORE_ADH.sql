@@ -110,19 +110,19 @@ CREATE TABLE [tm].[VIEW_STORE_ADH]
 [valid_adherence] [int] NOT NULL,
 [valid_position] [int] NOT NULL,
 [record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__VIEW_STOR__recor__29EF4D2F] DEFAULT (getdate())
-) ON [Adherence]
+) ON [PRIMARY]
 GO
-ALTER TABLE [tm].[VIEW_STORE_ADH] ADD CONSTRAINT [PK_VIEW_STORE_ADH] PRIMARY KEY CLUSTERED ([adherence_id]) ON [Adherence]
+ALTER TABLE [tm].[VIEW_STORE_ADH] ADD CONSTRAINT [PK_VIEW_STORE_ADH] PRIMARY KEY CLUSTERED ([adherence_id]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_tm_VIEW_STORE_ADH_23077] ON [tm].[VIEW_STORE_ADH] ([block], [calendar_date]) INCLUDE ([emx_block]) ON [Adherence]
+CREATE NONCLUSTERED INDEX [ix_tm_VIEW_STORE_ADH_23077] ON [tm].[VIEW_STORE_ADH] ([block], [calendar_date]) INCLUDE ([emx_block]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_ADH_calendar_date] ON [tm].[VIEW_STORE_ADH] ([calendar_date]) ON [Adherence]
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_ADH_calendar_date] ON [tm].[VIEW_STORE_ADH] ([calendar_date]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_tm_VIEW_STORE_ADH_calendar_date_includes3] ON [tm].[VIEW_STORE_ADH] ([calendar_date]) INCLUDE ([adhere_min], [stop], [stop_name]) ON [Adherence]
+CREATE NONCLUSTERED INDEX [ix_tm_VIEW_STORE_ADH_calendar_date_includes3] ON [tm].[VIEW_STORE_ADH] ([calendar_date]) INCLUDE ([adhere_min], [stop], [stop_name]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_tm_VIEW_STORE_ADH_23072] ON [tm].[VIEW_STORE_ADH] ([calendar_date]) INCLUDE ([block]) ON [Adherence]
+CREATE NONCLUSTERED INDEX [ix_tm_VIEW_STORE_ADH_23072] ON [tm].[VIEW_STORE_ADH] ([calendar_date]) INCLUDE ([block]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_view_store_adh_calendar_id_the_bus] ON [tm].[VIEW_STORE_ADH] ([calendar_id], [the_bus]) ON [Adherence]
+CREATE NONCLUSTERED INDEX [ix_view_store_adh_calendar_id_the_bus] ON [tm].[VIEW_STORE_ADH] ([calendar_id], [the_bus]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_ADH_revenue_id_bus_calendar_id] ON [tm].[VIEW_STORE_ADH] ([revenue_id], [the_bus], [calendar_id]) ON [Adherence]
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_ADH_revenue_id_bus_calendar_id] ON [tm].[VIEW_STORE_ADH] ([revenue_id], [the_bus], [calendar_id]) ON [PRIMARY]
 GO

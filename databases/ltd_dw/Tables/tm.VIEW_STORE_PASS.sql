@@ -76,17 +76,17 @@ CREATE TABLE [tm].[VIEW_STORE_PASS]
 [work_piece_id] [numeric] (10, 0) NULL,
 [isOverload] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__VIEW_STOR__recor__3DE13743] DEFAULT (getdate())
-) ON [PassengerCount]
+) ON [PRIMARY]
 GO
-ALTER TABLE [tm].[VIEW_STORE_PASS] ADD CONSTRAINT [PK_VIEW_STORE_PASS] PRIMARY KEY CLUSTERED ([passenger_count_id]) ON [PassengerCount]
+ALTER TABLE [tm].[VIEW_STORE_PASS] ADD CONSTRAINT [PK_VIEW_STORE_PASS] PRIMARY KEY CLUSTERED ([passenger_count_id]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_board_include2] ON [tm].[VIEW_STORE_PASS] ([board]) INCLUDE ([calendar_date], [service_type_text]) ON [PassengerCount]
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_board_include2] ON [tm].[VIEW_STORE_PASS] ([board]) INCLUDE ([calendar_date], [service_type_text]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_calendar_date_include1] ON [tm].[VIEW_STORE_PASS] ([calendar_date]) INCLUDE ([the_bus]) ON [PassengerCount]
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_calendar_date_include1] ON [tm].[VIEW_STORE_PASS] ([calendar_date]) INCLUDE ([the_bus]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_calendar_date_gn_latitude_gn_longitude_include3] ON [tm].[VIEW_STORE_PASS] ([calendar_date], [gn_latitude], [gn_longitude]) INCLUDE ([block_numeric], [pc_latitude], [pc_longitude]) ON [PassengerCount]
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_calendar_date_gn_latitude_gn_longitude_include3] ON [tm].[VIEW_STORE_PASS] ([calendar_date], [gn_latitude], [gn_longitude]) INCLUDE ([block_numeric], [pc_latitude], [pc_longitude]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_many] ON [tm].[VIEW_STORE_PASS] ([calendar_id], [calendar_date], [route], [veh], [trip_end_time], [passenger_count_id]) ON [PassengerCount]
+CREATE NONCLUSTERED INDEX [ix_VIEW_STORE_PASS_many] ON [tm].[VIEW_STORE_PASS] ([calendar_id], [calendar_date], [route], [veh], [trip_end_time], [passenger_count_id]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ix_view_store_pass_calendar_id_the_bus] ON [tm].[VIEW_STORE_PASS] ([calendar_id], [the_bus]) ON [PassengerCount]
+CREATE NONCLUSTERED INDEX [ix_view_store_pass_calendar_id_the_bus] ON [tm].[VIEW_STORE_PASS] ([calendar_id], [the_bus]) ON [PRIMARY]
 GO

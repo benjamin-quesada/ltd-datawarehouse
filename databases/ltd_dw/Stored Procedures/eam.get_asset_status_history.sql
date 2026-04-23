@@ -3,8 +3,9 @@ GO
 SET ANSI_NULLS ON
 GO
 
-CREATE   PROCEDURE [eam].[get_asset_status_history]
-as
+
+CREATE PROCEDURE [eam].[get_asset_status_history]
+AS
 
 /*
 
@@ -37,7 +38,7 @@ WHERE session_id = @@SPID ;
 
 BEGIN TRY
 
-insert into [eam].[qasset_status_history]
+INSERT INTO [eam].[qasset_status_history]
            ([EquipmentID]
            ,[EquipmentStatus]
            ,[LifeCycleStatusCodeID]
@@ -65,7 +66,7 @@ insert into [eam].[qasset_status_history]
            ,[CapitalizedValue]
            ,[DateCapitalized]
            ,[LicenseNumber])
-select [EquipmentID]
+SELECT [EquipmentID]
            ,[EquipmentStatus]
            ,[LifeCycleStatusCodeID]
            ,[LifecycleStatusDescription]
@@ -92,8 +93,8 @@ select [EquipmentID]
            ,[CapitalizedValue]
            ,[DateCapitalized]
            ,[LicenseNumber]
-		   from eam.qasset_status s
-where not exists (select 1 from [eam].[qasset_status_history] where [EquipmentID] = s.[EquipmentID] and cast(record_created_date as date) = cast(getdate() as date))
+		   FROM eam.qasset_status s
+WHERE NOT EXISTS (SELECT 1 FROM [eam].[qasset_status_history] WHERE [EquipmentID] = s.[EquipmentID] AND CAST(record_created_date AS DATE) = CAST(GETDATE() AS DATE))
 
 
 
@@ -105,9 +106,9 @@ BEGIN CATCH
                     SELECT [NAME]
                     FROM msdb.dbo.sysmail_profile
                     )
-       DECLARE @errormsg VARCHAR(max)
+       DECLARE @errormsg VARCHAR(MAX)
              ,@error INT
-             ,@message VARCHAR(max)
+             ,@message VARCHAR(MAX)
              ,@xstate INT
              ,@errsev INT
              ,@sub VARCHAR(255);
@@ -117,12 +118,12 @@ BEGIN CATCH
              ,@message = ERROR_MESSAGE()
              ,@xstate = XACT_STATE();
 
-       SELECT @errormsg = 'Error in ' + isnull(@SPROC, '') + ': ' + cast(isnull(@error, '') AS NVARCHAR(32)) + '|' + coalesce(@message, '') + '|' + cast(isnull(@xstate, '') AS NVARCHAR(32)) + '|' +cast(isnull(@errsev, '') AS NVARCHAR(32))
+       SELECT @errormsg = 'Error in ' + ISNULL(@SPROC, '') + ': ' + CAST(ISNULL(@error, '') AS NVARCHAR(32)) + '|' + COALESCE(@message, '') + '|' + CAST(ISNULL(@xstate, '') AS NVARCHAR(32)) + '|' +CAST(ISNULL(@errsev, '') AS NVARCHAR(32))
 
        SELECT @sub = 'ERROR: ' + @SPROC
 
        EXEC msdb.dbo.sp_send_dbmail @profile_name = @profile
-             ,@recipients = 'barb.eichberger@ltd.org' 
+             ,@recipients = 'barb.eichberger@ltd.org, data@ltd.org' 
              ,@subject = @sub
              ,@body = @errormsg;
 
@@ -131,5 +132,5 @@ BEGIN CATCH
                     ,@errsev
                     ,1
                     )
-END catch
+END CATCH
 GO

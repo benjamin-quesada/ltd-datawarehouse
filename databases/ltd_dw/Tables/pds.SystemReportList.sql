@@ -14,7 +14,3 @@ ALTER TABLE [pds].[SystemReportList] ADD CONSTRAINT [PK_SystemReportList] PRIMAR
 GO
 CREATE FULLTEXT INDEX ON [pds].[SystemReportList] KEY INDEX [PK_SystemReportList] ON [Report Description]
 GO
-ALTER FULLTEXT INDEX ON [pds].[SystemReportList] ADD ([report_name_extracted] LANGUAGE 1033)
-GO
-ALTER FULLTEXT INDEX ON [pds].[SystemReportList] ADD ([long_description_text] LANGUAGE 1033)
-GO
