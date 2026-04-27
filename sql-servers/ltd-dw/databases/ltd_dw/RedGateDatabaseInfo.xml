@@ -7,7 +7,7 @@
   <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   <DatabaseVersion>17</DatabaseVersion>
   <CompatibilityLevel>1</CompatibilityLevel>
-  <EngineEdition>Standard</EngineEdition>
+  <EngineEdition>Enterprise</EngineEdition>
   <IsAzure>False</IsAzure>
   <ScriptFolderType>Default</ScriptFolderType>
   <MaxDataFileSize>10485760</MaxDataFileSize>
