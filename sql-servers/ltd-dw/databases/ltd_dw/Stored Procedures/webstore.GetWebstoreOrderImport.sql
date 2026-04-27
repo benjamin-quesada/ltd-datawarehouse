@@ -444,4 +444,7 @@ BEGIN
     END CATCH;
 
 END
+
+GO
+GRANT EXECUTE ON  [webstore].[GetWebstoreOrderImport] TO [public]
 GO
