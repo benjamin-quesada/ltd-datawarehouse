@@ -5,6 +5,7 @@ GO
 
 
 
+
 CREATE   PROCEDURE [tm].[get_logged_message_from_tmdailylog]
 
 AS
@@ -19,7 +20,13 @@ USE			: exec [tm].[get_logged_message_from_tmdailylog]
 UPDATED BY:	Sopheap Suy
 UPDATED DT:  10/31/2024
 purpose	 :  Add object activities on who, what, when call this object
-			write this data to aud.object_activity table everytime it's called */
+			write this data to aud.object_activity table everytime it's called 
+
+            
+UPDATED BY:	B. Eichberger
+UPDATED DT:  7/7/2026
+purpose	 :  Add logged message type 128 for verbose passenger messages
+*/
 
 SET NOCOUNT ON
 
@@ -89,7 +96,7 @@ SELECT [calendar_id]            = lm.calendar_id
 									                                ELSE mt.message_type_text
 	                              END 
       ,[via_wlan]               = CASE WHEN lm.message_type_id IN(16,20,24,26,37,48,49) THEN cat_7
-                                       WHEN lm.message_type_id = 59                     THEN msg_group
+                                       WHEN lm.message_type_id IN ( 59 ,128)            THEN msg_group
                                                                                         ELSE NULL
                                   END 
       ,[odometer]               = CAST((lm.odometer / 100.0) AS NUMERIC(7,2)) 

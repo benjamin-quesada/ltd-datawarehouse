@@ -4,7 +4,7 @@ SET ANSI_NULLS ON
 GO
 
 CREATE PROCEDURE [dbo].[z_google_ltd] (@for VARCHAR(max) = '')
--- exec z_google_ltd 'employeeId'
+-- exec z_google_ltd '12ob2'
 AS
 BEGIN
 	SET @for = replace(@for, '_', '[_]');
@@ -39,6 +39,7 @@ BEGIN
 				FROM information_schema.tables
 				WHERE table_type = 'base table'
 				and table_name not like '%HST'
+				--AND table_schema = 'hastus'
 					AND quotename(table_schema) + '.' + quotename(table_name) > @tablename
 					AND objectproperty(object_id(quotename(table_schema) + '.' + quotename(table_name)), 'ismsshipped') = 0
 				);

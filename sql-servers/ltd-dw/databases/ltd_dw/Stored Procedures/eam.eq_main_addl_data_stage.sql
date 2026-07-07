@@ -6,7 +6,9 @@ GO
 
 
 
-CREATE    PROCEDURE  [eam].[eq_main_addl_data_stage]
+
+
+CREATE      PROCEDURE  [eam].[eq_main_addl_data_stage]
 AS
 
 /*-----------LTD_GLOSSARY---------------
@@ -106,7 +108,7 @@ BEGIN TRY
            ,registration_value
            ,postal_code
            ,VRG_valuecode_id
-           ,WAPROF_assign_profile_id
+          -- ,WAPROF_assign_profile_id
            ,license_issue_date
            ,purchase_year
            ,COUNTY_secondary_id
@@ -204,7 +206,7 @@ BEGIN TRY
            ,registration_value
            ,postal_code
            ,VRG_valuecode_id
-           ,WAPROF_assign_profile_id
+           --,WAPROF_assign_profile_id -- this column no longer exists after eam upgrade
            ,license_issue_date
            ,purchase_year
            ,COUNTY_secondary_id
@@ -255,8 +257,8 @@ BEGIN TRY
 		   , @ETLProcessActivityID
 		   , row_id
 FROM [LTD-EAM].proto.emsdba.EQ_MAIN_ADDL
-	WHERE (COALESCE(X_datetime_insert, GETDATE()) >= @previous_start_time
-	OR COALESCE(X_datetime_update,GETDATE())  >= @previous_start_time)
+	WHERE (COALESCE(X_datetime_insert, GETDATE()) >= CAST(@previous_start_time AS DATE)
+	OR COALESCE(X_datetime_update,GETDATE())  >= CAST(@previous_start_time AS DATE))
 
 	SET @cnt = (SELECT COUNT(*) FROM eam.eq_main_stage
 	WHERE ETLProcessActivityID = @ETLProcessActivityID)

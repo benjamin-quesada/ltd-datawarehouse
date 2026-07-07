@@ -6,7 +6,8 @@ CREATE TABLE [hastus].[bsi_headers]
 [tpat_route] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 [rte_description] [varchar] (60) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 [time_from_point] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__bsi_heade__recor__4387F963] DEFAULT (sysdatetime()),
+[ppat_description] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[record_created_date] [datetime2] NOT NULL DEFAULT (sysdatetime()),
 [record_updated_date] [datetime2] NULL
-) ON [PRIMARY]
+)
 GO

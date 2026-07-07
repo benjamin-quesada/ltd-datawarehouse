@@ -11,6 +11,12 @@ CREATE PROCEDURE [process].[bay_grid_step1]
 AS
 
 /*
+
+Editor		:	B. Eichberger
+Edit date	:	20260609
+Description	:	Adapt for migration back to LTD-DW - remove  references to [LTD-ETL]
+
+
 Editor		:	B. Eichberger
 Edit date	:	20260402
 Description	:	Adapt for migration to LTD-ETL - change msdb job references to [LTD-ETL]
@@ -49,7 +55,7 @@ BEGIN TRY
 --DECLARE @currentuser VARCHAR(90) = 'Heather'
 DECLARE @isRunning INT = (
 SELECT SUM(rc) FROM (
-select ISNULL(COUNT(*),0) rc FROM [ltd-etl].SSISDB.catalog.executions WHERE project_name LIKE '%load bay grid%' AND end_time IS NULL
+select ISNULL(COUNT(*),0) rc FROM SSISDB.catalog.executions WHERE project_name LIKE '%load bay grid%' AND end_time IS NULL
 AND start_time >= DATEADD(MINUTE,-4,GETDATE())
 UNION
 SELECT ISNULL(COUNT(*),0)
@@ -57,11 +63,11 @@ FROM
 (SELECT job.name, job.job_id, job.originating_server, activity.run_requested_date
 , DATEDIFF(SECOND, activity.run_requested_date
 , GETDATE()) AS Elapsed, activity.stop_execution_date
-     FROM [ltd-etl].msdb.dbo.sysjobs_view job
-          JOIN [ltd-etl].msdb.dbo.sysjobactivity activity ON job.job_id=activity.job_id
-          JOIN [ltd-etl].msdb.dbo.syssessions sess ON sess.session_id=activity.session_id
+     FROM msdb.dbo.sysjobs_view job
+          JOIN msdb.dbo.sysjobactivity activity ON job.job_id=activity.job_id
+          JOIN msdb.dbo.syssessions sess ON sess.session_id=activity.session_id
           JOIN(SELECT MAX(agent_start_date) AS max_agent_start_date
-               FROM [ltd-etl].msdb.dbo.syssessions) sess_max ON sess.agent_start_date=sess_max.max_agent_start_date
+               FROM msdb.dbo.syssessions) sess_max ON sess.agent_start_date=sess_max.max_agent_start_date
      WHERE run_requested_date IS NOT NULL AND stop_execution_date IS NULL AND job.name='Maintain Source Data - Hastus Bay Use On Demand'
 	 ) i
    ) t 

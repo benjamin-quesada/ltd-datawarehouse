@@ -4,7 +4,8 @@ SET ANSI_NULLS ON
 GO
 
 
-CREATE    PROCEDURE  [eam].[eq_main_data_stage]
+
+CREATE     PROCEDURE  [eam].[eq_main_data_stage]
 AS
 
 /*-----------LTD_GLOSSARY---------------
@@ -515,8 +516,8 @@ BEGIN TRY
 		, last_pm_start_meter_2
 		, last_meter_2_source 
 	FROM [LTD-EAM].proto.emsdba.eq_main
-	WHERE (COALESCE(X_datetime_insert, GETDATE()) >= @previous_start_time
-	OR COALESCE(X_datetime_update,GETDATE())  >= @previous_start_time)
+	WHERE (COALESCE(X_datetime_insert, GETDATE()) >= CAST(@previous_start_time AS DATE)
+	OR COALESCE(X_datetime_update,GETDATE())  >= CAST(@previous_start_time AS DATE) )
 
 	SET @cnt = (SELECT COUNT(*) FROM eam.eq_main_stage
 	WHERE ETLProcessActivityID = @ETLProcessActivityID)

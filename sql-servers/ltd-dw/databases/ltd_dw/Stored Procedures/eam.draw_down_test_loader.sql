@@ -3,7 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
-CREATE   PROCEDURE [eam].[draw_down_test_loader]
+CREATE     PROCEDURE [eam].[draw_down_test_loader]
 AS
 
 	/*
@@ -21,7 +21,17 @@ select * from [eam].[draw_down_test] where work_order_no = 7631
 UPDATED BY:	Sopheap Suy
 UPDATED DT:  10/31/2024
 purpose	 :  Add object activities on who, what, when call this object
-			write this data to aud.object_activity table everytime it's called */
+			write this data to aud.object_activity table everytime it's called 
+			
+UPDATED BY:	Ben Quesada
+UPDATED DT:  5/20/2026
+purpose	 :  update to LTD-TEST-EAMV25, changed email to data@ltd.org
+
+*/
+
+
+
+
 
 SET NOCOUNT ON
 
@@ -51,7 +61,7 @@ DROP TABLE if exists #test_reason
 SELECT [EMP_empl_no] AS employee_id
 		,REPLACE([name],'ý','') AS full_name
 INTO #test_empl
-FROM [LTD-TEST-EAMV22].[proto].[emsdba].[EMP_MAIN]
+FROM [LTD-TEST-EAMV25].[proto].[emsdba].[EMP_MAIN]
 WHERE active = 'Y'
 OPTION(MAXDOP 2) ;
 
@@ -69,8 +79,8 @@ SELECT	m.work_order_no
 		,t.equip_warr_work
 		,SUM(t.amt_warr_recovered) amt_warr_recovered
 INTO	#test_eamlabor
-FROM	[LTD-TEST-EAMV22].proto.[emsdba].[LAB_MAIN] m WITH(NOLOCK)
-LEFT JOIN [LTD-TEST-EAMV22].proto.[emsdba].[TSK_MAIN] t ON t.TASK_task_code = m.TASK_task_code AND t.work_order_yr = m.work_order_yr AND t.work_order_no = m.work_order_no
+FROM	[LTD-TEST-EAMV25].proto.[emsdba].[LAB_MAIN] m WITH(NOLOCK)
+LEFT JOIN [LTD-TEST-EAMV25].proto.[emsdba].[TSK_MAIN] t ON t.TASK_task_code = m.TASK_task_code AND t.work_order_yr = m.work_order_yr AND t.work_order_no = m.work_order_no
 WHERE	ISNULL(m.work_order_yr, 0) >= 2022
 		AND m.fully_reversed = 'N'
 		AND m.work_order_yr <= YEAR(GETDATE())
@@ -104,20 +114,20 @@ SELECT	meter_1_reading
 		,comment_area
 		,[REAS_reas_for_repair]
 INTO	#test_jobmain
-FROM	[LTD-TEST-EAMV22].proto.emsdba.JOB_MAIN WITH(NOLOCK)
+FROM	[LTD-TEST-EAMV25].proto.emsdba.JOB_MAIN WITH(NOLOCK)
 WHERE	ISNULL(work_order_yr, 0) >= 2022
 OPTION(MAXDOP 2) ;
 
 SELECT [RepairReasonID]
 		,[Description]
 INTO #test_reason
-FROM [LTD-TEST-EAMV22].[proto].[emsdba].[QRepairReason] WITH(NOLOCK)
+FROM [LTD-TEST-EAMV25].[proto].[emsdba].[QRepairReason] WITH(NOLOCK)
 OPTION(MAXDOP 2) ;	
 	
 SELECT	*		
 INTO	#test_parts
 FROM	OPENQUERY
-	([LTD-TEST-EAMV22], '
+	([LTD-TEST-EAMV25], '
 SELECT work_order_yr_no=CAST(pm.work_order_yr AS VARCHAR(32))+''-''+CAST(pm.work_order_no AS VARCHAR(32))
   ,SUM([qty_issued]) qty_issued,[EQ_equip_no]
   ,SUM([amt_warr_recovered]) amt_warr_recovered
@@ -241,7 +251,7 @@ BEGIN CATCH
 	SELECT	@sub = 'ERROR: ' + @SPROC ;
 
 	EXEC msdb.dbo.sp_send_dbmail @profile_name = @profile
-								,@recipients = 'barb.eichberger@ltd.org'
+								,@recipients = 'data@ltd.org'
 								,@subject = @sub
 								,@body = @errormsg ;
 

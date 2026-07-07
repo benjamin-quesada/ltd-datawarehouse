@@ -3,6 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
 CREATE view [eam].[qasset_status]
 as
 select [EquipmentID] collate SQL_Latin1_General_CP1_CI_AS                 [EquipmentID]
@@ -33,7 +34,8 @@ select [EquipmentID] collate SQL_Latin1_General_CP1_CI_AS                 [Equip
      , [CapitalizedValue]
      , [DateCapitalized]
      , [LicenseNumber] collate SQL_Latin1_General_CP1_CI_AS               [LicenseNumber]
-from [LTD-EAM].[proto].[emsdba].[QAsset]                q
+-- select * 
+from [LTD-EAM].[ltd_db].[dbo].[LTD_QAsset]                q
     left join [LTD-EAM].[proto].emsdba.QLifeCycleStatus c
         on c.LifeCycleStatusCodeID = q.LifeCycleStatusCodeID
 --where q.DepartmentID = 'BUSES';

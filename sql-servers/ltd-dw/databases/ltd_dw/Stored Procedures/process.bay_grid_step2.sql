@@ -16,6 +16,10 @@ AS
 /*
 
 Editor		:	B. Eichberger
+Edit date	:	20260609
+Description	:	Adapt for migration back to LTD-DW - remove  references to [LTD-ETL]
+
+Editor		:	B. Eichberger
 Edit date	:	20260402
 Description	:	Adapt for migration to LTD-ETL - change msdb job references to [LTD-ETL]
 
@@ -42,7 +46,7 @@ INSERT INTO DBA.[aud].[Object_Activity]
 	([server_name], [database_name] ,[host_name], [System_User], [object_name]
 	,[client_net_address], [local_net_address], [auth_Scheme], [last_read], [last_write]
 	,[most_recent_sql_handle], [Timestamp], object_type)
-SELECT DISTINCT @@SERVERNAME, DB_NAME(),HOST_NAME(),SYSTEM_USER, @SPROC,
+SELECT DISTINCT @@SERVERNAME, DB_NAME(),HOST_NAME(),SYSTEM_USER, 'test',--@SPROC,
 	client_net_address, local_net_address , auth_Scheme, last_read, last_write 
 	,most_recent_sql_handle, CURRENT_TIMESTAMP AS [Timestamp], 'PROC'
 FROM sys.dm_exec_connections 
@@ -61,14 +65,16 @@ FROM
 (SELECT job.name, job.job_id, job.originating_server, activity.run_requested_date
 , DATEDIFF(SECOND, activity.run_requested_date
 , GETDATE()) AS Elapsed, activity.stop_execution_date
-     FROM [ltd-etl].msdb.dbo.sysjobs_view job
-          JOIN [ltd-etl].msdb.dbo.sysjobactivity activity ON job.job_id=activity.job_id
-          JOIN [ltd-etl].msdb.dbo.syssessions sess ON sess.session_id=activity.session_id
+     FROM msdb.dbo.sysjobs_view job
+          JOIN msdb.dbo.sysjobactivity activity ON job.job_id=activity.job_id
+          JOIN msdb.dbo.syssessions sess ON sess.session_id=activity.session_id
           JOIN(SELECT MAX(agent_start_date) AS max_agent_start_date
-               FROM [ltd-etl].msdb.dbo.syssessions) sess_max ON sess.agent_start_date=sess_max.max_agent_start_date
+               FROM msdb.dbo.syssessions) sess_max ON sess.agent_start_date=sess_max.max_agent_start_date
      WHERE run_requested_date IS NOT NULL AND stop_execution_date IS NULL AND job.name='Maintain Source Data - Hastus Bay Use On Demand') i
 	 ) t 
 )
+
+ 
 
 DECLARE @fixedUser VARCHAR(255) = (SELECT CASE WHEN @currentUser like '%Heather%' THEN 'LTD\Heather Lindsay' ELSE @currentUser END)	
 
@@ -77,7 +83,7 @@ IF @isRunning = 0
 BEGIN
 
 
-EXEC [ltd-etl].msdb.dbo.sp_start_job @job_name='Maintain Source Data - Hastus Bay Use On Demand'
+EXEC msdb.dbo.sp_start_job @job_name='Maintain Source Data - Hastus Bay Use On Demand'
 
 SELECT '
    As requested by '+REPLACE(@fixedUser,'LTD\','')+', the Bay Grid Processor has started.

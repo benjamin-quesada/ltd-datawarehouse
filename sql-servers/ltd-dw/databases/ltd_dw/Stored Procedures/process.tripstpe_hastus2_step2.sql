@@ -47,7 +47,7 @@ BEGIN TRY
   --DECLARE @currentuser VARCHAR(90) = 'Heather'
 DECLARE @isRunning INT = (
 SELECT SUM(rc) FROM (
-select ISNULL(COUNT(*),0) rc FROM SSISDB.catalog.executions WHERE project_name LIKE '%tripstpe%' AND end_time IS NULL
+select ISNULL(COUNT(*),0) rc FROM [LTD-ETL].SSISDB.catalog.executions WHERE project_name LIKE '%tripstpe%' AND end_time IS NULL
 AND start_time >= DATEADD(MINUTE,-4,GETDATE())
 UNION
 SELECT ISNULL(COUNT(*),0)
@@ -55,19 +55,19 @@ FROM
 (SELECT job.name, job.job_id, job.originating_server, activity.run_requested_date
 , DATEDIFF(SECOND, activity.run_requested_date
 , GETDATE()) AS Elapsed, activity.stop_execution_date
-     FROM msdb.dbo.sysjobs_view job
-          JOIN msdb.dbo.sysjobactivity activity ON job.job_id=activity.job_id
-          JOIN msdb.dbo.syssessions sess ON sess.session_id=activity.session_id
+     FROM [ltd-etl].msdb.dbo.sysjobs_view job
+          JOIN [ltd-etl].msdb.dbo.sysjobactivity activity ON job.job_id=activity.job_id
+          JOIN [ltd-etl].msdb.dbo.syssessions sess ON sess.session_id=activity.session_id
           JOIN(SELECT MAX(agent_start_date) AS max_agent_start_date
-               FROM msdb.dbo.syssessions) sess_max ON sess.agent_start_date=sess_max.max_agent_start_date
-     WHERE run_requested_date IS NOT NULL AND stop_execution_date IS NULL AND job.name='File Processing - Tripstpe Hastus2 - Excel') i
+               FROM [ltd-etl].msdb.dbo.syssessions) sess_max ON sess.agent_start_date=sess_max.max_agent_start_date
+     WHERE run_requested_date IS NOT NULL AND stop_execution_date IS NULL AND job.name='File Processing - Tripstpe from Excel to DW') i
 	 ) t 
 )
 IF @isRunning = 0 
 BEGIN
 
 DECLARE @fixedUser VARCHAR(90) = (SELECT CASE WHEN @currentUser like '%Heather%' THEN 'LTD\Heather Lindsay' ELSE @currentUser END)	
-EXEC msdb.dbo.sp_start_job @job_name='File Processing - Tripstpe Hastus2 - Excel'
+EXEC [LTD-ETL].msdb.dbo.sp_start_job @job_name='File Processing - Tripstpe from Excel to DW'
 
 
 SELECT '

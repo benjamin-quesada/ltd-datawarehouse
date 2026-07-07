@@ -1,4 +1,4 @@
-CREATE TABLE [tm].[logged_messages]
+CREATE TABLE [tm].[logged_messages_save]
 (
 [tm_logged_message_key] [bigint] NOT NULL IDENTITY(1, 1),
 [calendar_id] [int] NULL,
@@ -64,7 +64,23 @@ CREATE TABLE [tm].[logged_messages]
 [mdt_block_id] [int] NULL,
 [blk_id] [numeric] (10, 0) NULL,
 [transmitted_message_id] [bigint] NOT NULL,
-[record_created_date] [datetime2] NOT NULL CONSTRAINT [DF__logged_me__recor__17EA6F97] DEFAULT (sysdatetime()),
+[record_created_date] [datetime2] NOT NULL DEFAULT (sysdatetime()),
 [record_updated_date] [datetime2] NULL
-) ON [PRIMARY]
+)
+GO
+CREATE NONCLUSTERED INDEX [ix_tm_logged_messages_26080] ON [tm].[logged_messages_save] ([calendar_date]) INCLUDE ([calendar_id], [veh], [message_type_id], [message_type_text], [via_wlan], [mdt_hhmmss], [mdt_spm], [latitude], [longitude], [east_west_zone], [north_south_zone])
+GO
+CREATE NONCLUSTERED INDEX [IX_logged_messages_calendar_id_veh_odometer] ON [tm].[logged_messages_save] ([calendar_id], [route]) INCLUDE ([veh], [odometer])
+GO
+CREATE NONCLUSTERED INDEX [ix_logged_messages_local_timestamp] ON [tm].[logged_messages_save] ([local_timestamp])
+GO
+CREATE NONCLUSTERED INDEX [tm_logged_messages_local_timestamp_veh_latitude_longitude_includes_all] ON [tm].[logged_messages_save] ([local_timestamp], [veh], [latitude], [longitude]) INCLUDE ([calendar_id], [calendar_date], [day_type], [bus_class], [artic], [emx_bus], [message_type_id], [message_type_text], [via_wlan], [odometer], [mdt_hhmmss], [mdt_spm], [route], [block], [stop_no], [stop_name], [dir], [tp_id], [tp_name], [operator], [adherence], [validity], [FOM], [receiving_dgps], [sp_place], [east_west_zone], [north_south_zone], [route_version], [messages_version], [route_offset], [effective_service], [direction], [time_point_offset], [stop_offset], [ons], [offs], [msg_group], [current_driver], [free_text_msg], [mdt_block_id], [blk_id])
+GO
+CREATE NONCLUSTERED INDEX [ix_tm_logged_messages_26070] ON [tm].[logged_messages_save] ([message_type_id], [local_timestamp]) INCLUDE ([veh], [artic], [emx_bus], [validity], [flag32])
+GO
+CREATE NONCLUSTERED INDEX [ix_logged_messages_route_includes3] ON [tm].[logged_messages_save] ([route]) INCLUDE ([calendar_id], [veh], [odometer])
+GO
+CREATE NONCLUSTERED INDEX [ix_ltd_logged_messages_transmitted_message_id] ON [tm].[logged_messages_save] ([transmitted_message_id])
+GO
+CREATE NONCLUSTERED INDEX [ix_tm_logged_messages_26076] ON [tm].[logged_messages_save] ([veh], [valid_position], [local_timestamp]) INCLUDE ([artic], [emx_bus])
 GO

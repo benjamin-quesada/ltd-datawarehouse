@@ -35,6 +35,10 @@ DECLARE @outputTbl TABLE (actionNm VARCHAR(32));
 
 
 drop table if exists #trp_setup;
+DROP TABLE IF EXISTS #filteredMerge;
+DROP TABLE IF EXISTS #prepMerge;
+
+
   WITH CategorizedRows AS (
     SELECT 
         ID,filedate,
@@ -48,7 +52,7 @@ drop table if exists #trp_setup;
         ID,filedate,
         RawLine,
         -- "Fill down" the ParentGroupID to all rows below it until the next TRP
-        max(ParentGroupID) over (ORDER BY ID ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS EffectiveParentID
+        max(ISNULL(ParentGroupID,0)) over (ORDER BY ID ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS EffectiveParentID
     FROM CategorizedRows
 )
 
@@ -61,8 +65,6 @@ join CategorizedRows c on c.id = l.EffectiveParentID
 WHERE l.RawLine LIKE 'PTS%'
 order by 1,2;
 
-
-drop table if exists #prepMerge
 CREATE TABLE #prepMerge (
 	[filedate] date NOT NULL,
 	[file_row_id] [int] NOT NULL,
@@ -104,16 +106,30 @@ SELECT filedate, id
 from #trp_setup
 order by  id
 
---SELECT * FROM #prepMerge where trp_number = '1453'
---SELECT * FROM [hastus].[avl_trp] order by filedate,file_row_id
 
 declare @file_dt date = (SELECT distinct filedate FROM #prepMerge)
 delete from [hastus].[avl_trp] where filedate = @file_dt -- replacing the entire filedate each time - if the file date is in the prep then delete if from the trp table and reload all of that filedate
 
+SELECT filedate
+	  ,file_row_id
+	  ,trp_int_number
+	  ,trp_number
+	  ,trp_operating_days
+	  ,trp_route_statistic
+	  ,tpat_external_id
+	  ,trp_type
+	  ,trp_type_code
+	  ,trp_is_special
+	  ,trp_is_public
+	  ,tstp_passing_time 
+INTO #filteredMerge
+FROM #prepMerge
+WHERE (ISNUMERIC(trp_route_statistic)=1 OR trp_route_statistic = '79x')
+AND trp_route_statistic <> '25'
+-- filter out all FLT and Training runs
 
-truncate table [hastus].[avl_trp] 
 merge [hastus].[avl_trp] t 
-using #prepMerge s on (
+using #filteredMerge s on (
 t.filedate = s.filedate 
   )
 when not matched then insert
@@ -128,7 +144,9 @@ when not matched then insert
 ,	[trp_type_code]
 ,	[trp_is_special]
 ,	[trp_is_public]
-,	[tstp_passing_time])
+,	[tstp_passing_time]
+,   [tstp_passing_time_hr]
+,   [tstp_passing_time_min])
 values(
  s.filedate
 ,s.file_row_id
@@ -142,12 +160,11 @@ values(
 ,s.[trp_is_special]
 ,s.[trp_is_public]
 ,s.[tstp_passing_time]
+,LEFT(s.[tstp_passing_time],2)
+,RIGHT(s.[tstp_passing_time],2)
 )
 OUTPUT $action INTO @outputTbl;
 
-
-drop table if exists #prepMerge
-drop table if exists #rte_setup
 
 
 DECLARE @ins INT = (SELECT COUNT(*) FROM @outputTbl WHERE actionNm = 'INSERT')
@@ -172,6 +189,11 @@ SELECT 'TRP',
 ISNULL(@ins,0) ,ISNULL(@upd,0),ISNULL(@del,0),
 @sdt,
 SYSDATETIME()
+
+
+drop table if exists #trp_setup;
+DROP TABLE IF EXISTS #filteredMerge
+DROP TABLE IF EXISTS #prepMerge
 
 
 END TRY	  
